@@ -17,19 +17,19 @@ const slides = [{
     title: 'Quick setup, good defaults',
     source: anim1,
     text: 'Description.\nSay something cool',
-    colors: ['#63E2FF', '#B066FE']
+    colors: ['#f9e5e4', '#e9a49f']
 }, {
     key: 'somethun-dos',
     title: 'Super customizable',
     source: anim2,
     text: 'Other cool stuff',
-    colors: ['#A3A1FF', '#3A3897']
+    colors: ['#e9a49f', '#e5bbba']
 }, {
     key: 'somethun1',
     title: 'No need to buy me beer',
     text: 'I\'m already out of descriptions\n\nLorem ipsum bla bla bla',
     source: anim3,
-    colors: ['#A3A1FF', '#3A3897']
+    colors: ['#e5bbba', '#d48a5e']
 }];
 
 _renderItem = ({ item }) => {

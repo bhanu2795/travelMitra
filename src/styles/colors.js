@@ -1,5 +1,14 @@
 export default {
 
+
+  first: '#f9e5e4',
+  second: '#0f0808',
+  third: '#e9a49f',
+  fourth: '#b72925',
+  fifth: '#e5bbba',
+  sixth: '#582220',
+  seventh: '#d48a5e',
+
   gradientTop: '#202942',
   gradientBottom: '#1C1A3A',
 

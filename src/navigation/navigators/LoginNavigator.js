@@ -5,7 +5,7 @@ import navOptions from '../../utils/navOptions';
 const LoginNavigator = createStackNavigator(LoginRoutes, {
   ...navOptions({
     title: 'Login',
-    // icon: 'random',
+    icon: 'random',
   }),
 });
 

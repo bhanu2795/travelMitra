@@ -14,7 +14,7 @@ const Login = ({
     login,
     navigation,
     inputRefs,
-    email,
+    username,
     password,
     ...props
 }) => (
@@ -29,16 +29,15 @@ const Login = ({
                         <View style={s.form}>
                             <View style={s.input}>
                                 <Input
-                                    isValid={email.isValid}
-                                    error={!email.isValid ? 'Enter Valid Email' : null}
-                                    placeholder={'EMAIL'}
+                                    isValid={username.isValid}
+                                    error={!username.isValid ? 'Enter Valid Username' : null}
+                                    placeholder={'Username'}
                                     maxLength={30}
                                     autoCapitalize={'none'}
                                     secondContainerStyle={s.secondContainerStyle}
-                                    onChangeText={(text) => { signinData.email = text; setSigninData(signinData); }}
+                                    onChangeText={(text) => { signinData.username = text; setSigninData(signinData); }}
                                     containerStyle={s.noteContainer}
-                                    value={signinData.email}
-                                    keyboardType={'email-address'}
+                                    value={signinData.username}
                                     returnKeyType={'next'}
                                     onSubmitEditing={() => { inputRefs.password.focus(); }}
                                 />
@@ -76,7 +75,7 @@ const Login = ({
                                 </View>
                             </View>
                             <View style={s.formOptions}>
-                                <Button secondaryOpacity backgroundColor={'#302070'} titleStyle={s.btnText} disabled={!(email.isValid && password.isValid)} containerStyle={[s.loginBtn, { marginRight: 10 }]} title={'SIGN IN'} onPress={() => login(signinData)} />
+                                <Button secondaryOpacity backgroundColor={'#302070'} titleStyle={s.btnText} disabled={!(username.isValid && password.isValid)} containerStyle={[s.loginBtn, { marginRight: 10 }]} title={'SIGN IN'} onPress={() => login(signinData)} />
                                 <Button secondaryOpacity backgroundColor={'#813AB7'} titleStyle={s.btnText} containerStyle={s.loginBtn} title={'SIGN UP'} onPress={() => navigation.navigate('Register')} />
                             </View>
                         </View>
@@ -123,7 +122,7 @@ Login.propTypes = {
     login: T.func.isRequired,
     navigation: T.object.isRequired,
     inputRefs: T.object.isRequired,
-    email: T.object.isRequired,
+    username: T.object.isRequired,
     password: T.object.isRequired
 };
 

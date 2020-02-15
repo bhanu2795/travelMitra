@@ -16,7 +16,7 @@ const enhance = compose(
         _journeyHandler: props => data => {
             onNavigate(props.navigation, screens.Journey, { data: data });
         }
-    })
+    }),
 );
 
 export default hoistStatics(enhance)(HomeScreenView);

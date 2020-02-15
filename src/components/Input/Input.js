@@ -51,7 +51,7 @@ const Input = ({
                 {!!prefix && <Text style={s.prefix}>{prefix}</Text>}
                 <TextInput
                     autoCorrect={false}
-                    placeholderTextColor={placeholderColor || '#fff'}
+                    placeholderTextColor={placeholderColor || colors.third}
                     underlineColorAndroid={colors.transparent}
                     onFocus={onFocus}
                     onBlur={onBlur}

@@ -5,7 +5,7 @@ import navOptions from '../../utils/navOptions';
 const ProfileNavigator = createStackNavigator(ProfileRoutes, {
   ...navOptions({
     title: 'Profile',
-    // icon: 'bullseye',
+    icon: 'bullseye',
   }),
 });
 

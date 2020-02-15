@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     secondContainerStyle: {
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: '#7774D1',
+        backgroundColor: colors.first,
         borderRadius: 8
     },
 
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     },
 
     text: {
-        color: '#fff'
+        color: colors.first
     },
 
     rowInputs: {
@@ -131,7 +131,8 @@ const styles = StyleSheet.create({
     btnText: {
         padding: indent,
         fontWeight: '900',
-        fontSize: 18
+        fontSize: 18,
+        color: colors.first
     },
 
     icons: {

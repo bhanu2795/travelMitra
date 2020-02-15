@@ -11,8 +11,8 @@ const initialState = {
 const settingsReducer = handleActions({
   [types.SIGN_IN]: (state, { payload }) => ({
     ...state,
-    user: payload.isSuccess ? payload : null,
-    isSignedIn: payload.isSuccess ? true : false
+    user: payload.hasOwnProperty('access_token') ? payload : null,
+    isSignedIn: !payload.hasOwnProperty('error') ? true : false
   }),
   [types.LOGOUT]: (state) => ({
     ...state,

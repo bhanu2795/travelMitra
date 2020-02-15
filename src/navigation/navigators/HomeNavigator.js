@@ -5,7 +5,7 @@ import navOptions from '../../utils/navOptions';
 const HomeNavigator = createStackNavigator(HomeRoutes, {
     ...navOptions({
         title: 'Home',
-        // icon: 'random',
+        icon: 'random',
     }),
 });
 

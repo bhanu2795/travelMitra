@@ -1,8 +1,11 @@
 import React from 'react';
-import { StyleSheet, View, Modal } from 'react-native';
-// import LottieView from 'lottie-react-native';
-// import loading from '../../assets/anim/loading.json';
+import { StyleSheet, View, Modal, Dimensions } from 'react-native';
+import LottieView from 'lottie-react-native';
+import loading from '../../assets/anim/loading.json';
+import { dimensions, colors, fontSizes, fontWeights } from '../../styles';
 import { Text } from '../../components';
+const { indent, doubleIndent } = dimensions;
+const { width } = Dimensions.get('window');
 
 const s = StyleSheet.create({
   modalBackground: {
@@ -10,22 +13,22 @@ const s = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'column',
     justifyContent: 'space-around',
-    backgroundColor: '#00000040'
+    backgroundColor: '#ffffff00'
   },
   activityIndicatorWrapper: {
-    backgroundColor: '#FFFFFF',
-    height: 100,
-    width: 150,
+    backgroundColor: colors.first,
+    height: (width / 2) - (2 * doubleIndent),
+    width: (width / 2) - (2 * doubleIndent),
     borderRadius: 10,
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'center',
     position: 'relative'
   },
   shadow: {
     ...Platform.select({
       ios: {
-        shadowColor: 'red',
+        shadowColor: colors.sixth,
         shadowOffset: { width: 0, height: 5 },
         shadowOpacity: 0.8,
         shadowRadius: 2
@@ -47,11 +50,11 @@ export default (propName = 'isLoading') => BaseComponent => props => (
       onRequestClose={() => { console.log('close modal') }}>
       <View style={[s.modalBackground, s.shadow]}>
         <View style={s.activityIndicatorWrapper}>
-          {/* <LottieView
+          <LottieView
             source={loading}
             autoPlay loop
-          /> */}
-          <Text style={{ position: 'absolute', bottom: 10 }}>Please Wait...</Text>
+          />
+          <Text style={{ position: 'absolute', bottom: 10, color: colors.sixth }}>Please Wait...</Text>
         </View>
       </View>
     </Modal>

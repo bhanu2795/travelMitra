@@ -9,8 +9,8 @@ import { withLoading } from '../../utils/enhancers';
 import { shallowCompare } from '../../utils/utils';
 
 const withValidation = withProps(({ signinData }) => ({
-    email: {
-        isValid: !!signinData.email && /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(signinData.email)
+    username: {
+        isValid: !!signinData.username && /^[789]\d{9}$/.test(signinData.username)
     },
     password: {
         isValid: !!signinData.password && signinData.password.length > 6
@@ -30,7 +30,7 @@ const goTabRouter = ({ navigation }) => {
 const enhance = compose(
     connect(mapStateToProps, { ...settingOperations, ...appOperations }),
     withState('signinData', 'setSigninData', {
-        email: '',
+        username: '',
         password: ''
     }),
     withState('inputRefs', 'setInputRefs', {
@@ -71,7 +71,7 @@ const enhance = compose(
         }
     }),
     withValidation,
-    // withLoading(),
+    withLoading(),
     lifecycle({
         componentDidMount() {
             if (this.props.isSignedIn) {
@@ -80,7 +80,7 @@ const enhance = compose(
         },
         componentWillUnmount() {
             this.props.setSigninData({
-                email: '',
+                username: '',
                 password: ''
             })
         },

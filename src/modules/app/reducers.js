@@ -3,6 +3,7 @@ import types from './types';
 
 const initialState = {
   isImagesLoaded: false,
+  isLoading: false
 };
 
 const authReducer = handleActions(
@@ -11,8 +12,12 @@ const authReducer = handleActions(
       ...state,
       isImagesLoaded: payload,
     }),
+    [types.IS_LOADING]: (state, { payload }) => ({
+      ...state,
+      isLoading: payload
+    })
   },
-  initialState,
+  initialState
 );
 
 export default authReducer;

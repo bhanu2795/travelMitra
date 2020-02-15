@@ -23,14 +23,14 @@ const Register = ({
     phoneCode,
     ...props
 }) => (
-        <LinearGradient colors={['#A3A1FF', '#3A3897']} style={s.root}>
+        <LinearGradient colors={[colors.fourth, colors.sixth]} style={s.root}>
             <ImageBackground source={bg} keyboardShouldPersistTaps={'handled'} style={s.imageBackground}>
                 <SafeAreaView />
                 <View style={s.root}>
                     <View style={s.registerContainer}>
                         <KeyboardAvoidingView behavior={'height'} keyboardVerticalOffset={300} enabled={keyBoard}>
                             <View style={s.container}>
-                                <Text style={[s.title, s.text]}>Travel</Text><Text style={[s.title, { color: '#3A3897' }]}>Mitra</Text>
+                                <Text style={[s.title, s.text]}>Travel</Text><Text style={[s.title, { color: colors.third }]}>Mitra</Text>
                             </View>
                             <View style={s.form}>
                                 <View style={s.rowInputs}>
@@ -149,13 +149,13 @@ const Register = ({
                                             onValueChange={(text) => { registerData.checked = text; setRegisterData(registerData); }}
                                         />
                                         <Text style={[s.text, s.bold]}>
-                                            I have read and agree <Text style={{ color: '#148BEE' }}> Terms of Services</Text>
+                                            I have read and agree <Text style={{ color: colors.fifth }}> Terms of Services</Text>
                                         </Text>
                                     </View>
                                 </View>
                                 <View style={s.formOptions}>
-                                    <Button secondaryOpacity backgroundColor={'#302070'} titleStyle={s.btnText} disabled={!(firstName.isValid && lastName.isValid && email.isValid && password.isValid && confirmPassword.isValid && mobileNumber.isValid && phoneCode.isValid)} containerStyle={[s.signinBtn, { marginRight: 10 }]} title={'SIGN UP'} onPress={() => register(registerData)} />
-                                    <Button secondaryOpacity backgroundColor={'#813AB7'} titleStyle={s.btnText} containerStyle={s.signinBtn} title={'SIGN IN'} onPress={() => navigation.navigate('Login')} />
+                                    <Button secondaryOpacity backgroundColor={colors.fourth} titleStyle={s.btnText} disabled={!(firstName.isValid && lastName.isValid && email.isValid && password.isValid && confirmPassword.isValid && mobileNumber.isValid && phoneCode.isValid)} containerStyle={[s.signinBtn, { marginRight: 10 }]} title={'SIGN UP'} onPress={() => register(registerData)} />
+                                    <Button secondaryOpacity backgroundColor={colors.third} titleStyle={s.btnText} containerStyle={s.signinBtn} title={'SIGN IN'} onPress={() => navigation.navigate('Login')} />
                                 </View>
                             </View>
                         </KeyboardAvoidingView>

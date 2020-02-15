@@ -1,11 +1,17 @@
 import React from 'react';
 // import T from 'prop-types';
 import Feather from 'react-native-vector-icons/Feather';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import { View, SafeAreaView, TouchableOpacity, ScrollView } from 'react-native';
-import { Text, Card } from '../../components';
+import { View, SafeAreaView, TouchableOpacity, ScrollView, Image, ImageBackground } from 'react-native';
+import { Text, HeaderTitle } from '../../components';
 import s from './styles';
+import { colors } from '../../styles';
+import LinearGradient from 'react-native-linear-gradient';
+
+import train from '../../assets/images/train.png';
+import plane from '../../assets/images/plane.png';
+import bus from '../../assets/images/bus.png';
+import taxi from '../../assets/images/taxi.png';
+import bg from '../../assets/images/bg.png';
 
 data = [
     {
@@ -78,72 +84,62 @@ const Home = ({
                     <View style={[s.optionsContainer]}>
                         <View>
                             <TouchableOpacity>
-                                <FontAwesome
-                                    name={'train'}
-                                    size={35}
-                                    color={'#fff'}
-                                />
+                                <Image style={{ width: 50, height: 50 }} resizeMode={'contain'} source={train} />
                             </TouchableOpacity>
                         </View>
                         <View>
                             <TouchableOpacity>
-                                <FontAwesome5
-                                    name={'plane-departure'}
-                                    size={35}
-                                    color={'#fff'}
-                                />
+                                <Image style={{ width: 50, height: 50 }} resizeMode={'contain'} source={plane} />
                             </TouchableOpacity>
                         </View>
                         <View>
                             <TouchableOpacity>
-                                <FontAwesome
-                                    name={'bus'}
-                                    size={35}
-                                    color={'#fff'}
-                                />
+                                <Image style={{ width: 50, height: 50 }} resizeMode={'contain'} source={bus} />
                             </TouchableOpacity>
                         </View>
                         <View>
                             <TouchableOpacity>
-                                <FontAwesome
-                                    name={'cab'}
-                                    size={35}
-                                    color={'#fff'}
-                                />
+                                <Image style={{ width: 50, height: 50 }} resizeMode={'contain'} source={taxi} />
                             </TouchableOpacity>
                         </View>
                     </View>
                     <View style={{ marginTop: 10, flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                         <View>
-                            <Text style={{ textTransform: 'capitalize', fontSize: 25 }}>Today's Journey</Text>
+                            <Text style={{ textTransform: 'capitalize', fontSize: 25, color: colors.second }}>Today's Journey</Text>
                         </View>
                         <View>
                             <TouchableOpacity onPress={() => _viewMoreHandler()}>
-                                <Text style={{ textTransform: 'uppercase' }}>View All</Text>
+                                <Text style={{ textTransform: 'uppercase', color: colors.second }}>View All</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
                     <View style={{ marginTop: 10, flexDirection: 'row', flexWrap: 'wrap' }}>
-                        {
-                            data.length ?
-                                data.map(({ airline, from, to, date, derparture, arrival }) => (
-                                    <View style={{ marginBottom: 10, marginHorizontal: 8 }}>
-                                        <TouchableOpacity onPress={() => _journeyHandler({ airline, from, to, date, derparture, arrival })}>
-                                            <Card>
-                                                <Text>Airline: {airline}</Text>
-                                                <Text>From: {from}</Text>
-                                                <Text>To: {to}</Text>
-                                                {/* <Text>Date: {JSON.stringify(date)}</Text> */}
-                                                <Text>Derparture: {derparture}</Text>
-                                                <Text>Arrival: {arrival}</Text>
-                                            </Card>
-                                        </TouchableOpacity>
-                                    </View>
-                                ))
-                                : null
-                        }
                     </View>
                 </View>
+                <ScrollView decelerationRate={'fast'} horizontal={true} showsHorizontalScrollIndicator={false}>
+                    {
+                        data.length ?
+                            data.map(({ airline, from, to, date, derparture, arrival }) => (
+                                <View style={{ marginBottom: 10 }}>
+                                    <TouchableOpacity onPress={() => _journeyHandler({ airline, from, to, date, derparture, arrival })}>
+                                        <LinearGradient style={{ marginHorizontal: 10, borderRadius: 10 }} colors={['#f9e5e4', '#e9a49f']}>
+                                            <ImageBackground style={{ width: '100%', height: '100%' }} source={bg} keyboardShouldPersistTaps={'handled'}>
+                                                <View style={{ padding: 10 }}>
+                                                    <Text>Airline: {airline}</Text>
+                                                    <Text>From: {from}</Text>
+                                                    <Text>To: {to}</Text>
+                                                    {/* <Text>Date: {JSON.stringify(date)}</Text> */}
+                                                    <Text>Derparture: {derparture}</Text>
+                                                    <Text>Arrival: {arrival}</Text>
+                                                </View>
+                                            </ImageBackground>
+                                        </LinearGradient>
+                                    </TouchableOpacity>
+                                </View>
+                            ))
+                            : null
+                    }
+                </ScrollView>
             </ScrollView>
         </View>
     );
@@ -156,22 +152,22 @@ Home.navigationOptions = ({ navigation }) => ({
             <Feather
                 name={'menu'}
                 size={25}
-                color={'#000'}
+                color={colors.first}
             />
         </TouchableOpacity>
     ),
     headerLeftContainerStyle: {
         paddingHorizontal: 10,
     },
-    headerTitleStyle: {
-        textTransform: 'uppercase'
+    headerStyle: {
+        backgroundColor: colors.fourth,
     },
-    // headerTitleContainerStyle: {
-    //     justifyContent: 'center',
-    //     alignItems: 'center'
-    // },
     headerTitleAllowFontScaling: true,
-    title: 'Home'
+    headerTitle: <HeaderTitle title={'Home'} titleStyle={{
+        textTransform: 'uppercase',
+        color: colors.first
+    }} />
+    // title: 'Home'
 });
 
 Home.propTypes = {

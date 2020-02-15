@@ -1,14 +1,14 @@
 import {
-  // signIn,
+  signIn,
   // logout,
   isInstallApp
 } from './actions';
-import { postData } from '../../services';
+import { postData, postUrlData } from '../../services';
 
 const checkSettings = data => async (dispatch) => {
   // console.log("getState().settings.isSignedIn", getState().settings.user)
   // setTimeout(() => {if (getState().settings.isSignedIn) dispatch(signIn())}, 100)
-  return await postData('api/v1/login', data).then(res => {
+  return await postUrlData('oauth/token', data).then(res => {
     dispatch(signIn(res));
     return res;
   }).catch(err => {

@@ -9,6 +9,7 @@ import VerticalSeparator from './VerticalSeparator';
 import Button from './Button';
 import KeyboardAvoidingView from './KeyboardAvoidingView';
 import Card from './Card';
+import HeaderTitle from './HeaderTitle';
 
 export {
     Drawer,
@@ -18,6 +19,7 @@ export {
     PropsProxyHOC,
     FormInput,
     Input,
+    HeaderTitle,
     VerticalSeparator,
     Button,
     KeyboardAvoidingView,

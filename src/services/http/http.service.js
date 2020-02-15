@@ -1,8 +1,5 @@
-import { store } from '../../store';
-import { settingOperations } from '../../modules/settings';
-
 export const config = {
-    BASE_URL: 'http://staging.b-cryptoexchange.com/'
+    BASE_URL: 'http://54.89.184.82:8080/'
 };
 
 export const getData = (url, key) => {
@@ -19,7 +16,7 @@ export const getData = (url, key) => {
         // }
         return res;
     }).catch(err => console.log(err));
-}
+};
 
 export const postData = (url, data) => {
     return fetch(config.BASE_URL + url, {
@@ -39,4 +36,16 @@ export const postData = (url, data) => {
         if (err.name === 'AbortError') return;
         throw err;
     });
-}
+};
+
+export const postUrlData = (url, data) => {
+    return fetch(config.BASE_URL + url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': 'Basic Y2xpZW50OnNlY3JldA=='
+        },
+        body: new URLSearchParams(data).toString(),
+        redirect: 'follow'
+    }).then(response => response.json()).then(result => result).catch(error => console.log('error', error));
+};

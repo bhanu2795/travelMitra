@@ -21,7 +21,7 @@ const enhance = compose(
     withHandlers({
         _onDone: props => () => {
             props.isInstall();
-            onNavigate(props.navigation, screens.App);
+            onNavigate(props.navigation, screens.Auth);
         }
     }),
     lifecycle({
